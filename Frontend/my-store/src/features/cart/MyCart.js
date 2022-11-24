@@ -40,8 +40,8 @@ const MyCart = () => {
         {myCart &&
           myCart.map((product) => (
             <div>
-              <Col key={product._id} className="flex-container">
-              <Card style={{ width: "30rem" }} >
+              <Col key={product._id} sm={2} md={2} lg={2} xl={2} >
+              <Card style={{ width: "20rem" }} >
                 <Card.Img src={`http://127.0.0.1:8000/static${product.image}`} />
                 <Card.Body>
                   <Card.Title>{product.desc}</Card.Title>

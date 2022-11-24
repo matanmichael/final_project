@@ -22,8 +22,9 @@ const Product = () => {
   
   useEffect(() => {
     dispatch(getallprodsAsync());
-  }, [allProducts.length]);
- 
+  }, [allProducts]);
+  
+  
   return (
     <div>
       <h3 className="w3-container w3-center">Store Products: {allProducts.length}</h3>
@@ -76,8 +77,9 @@ const Product = () => {
                       price:newprice,
                       desc: newdesc,
                       userToken: myToken,
-                      productId: prod._id,
+                      id: prod._id,
                       cat_id:prod.cat_id
+                    
                     
                     })
                   )

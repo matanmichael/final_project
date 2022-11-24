@@ -9,9 +9,10 @@ const OrderAdmin = () => {
 
     useEffect(() => {
         dispatch(getOrdersAsync(token));
-      }, []);
+      }, [orders]);
   return (
-    <div>{orders.map(orders=><div>order id:{" "}{orders._id} user id:{" "}{orders.user_id}  <button onClick={() => dispatch(delDataAsync({
+    
+    <div><h3>ORDERS</h3>{orders.map(orders=><div>order id:{" "}{orders._id} user id:{" "}{orders.user_id}  <button onClick={() => dispatch(delDataAsync({
       Id: orders._id,
       userToken: token
     }))}>

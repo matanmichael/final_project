@@ -13,6 +13,7 @@ import {
   removeItemFromCart,
 } from "../cart/cartSlice";
 import Button from "react-bootstrap/Button";
+import MyCart from "../cart/MyCart";
 
 const ProductByCat = () => {
   let params = useParams();
@@ -60,37 +61,9 @@ const ProductByCat = () => {
           );
         })}
         <hr></hr>
-        {myCart &&
-          myCart.map((product) => (
-            <div>
-              DESC: {product.desc} PRICE: ₪
-              {product.price}
-              <Button onClick={() => dispatch(decrementQuantity(product._id))}>
-                -
-              </Button>
-               AMOUNT: {product.amount}
-              <Button onClick={() => dispatch(incrementQuantity(product._id))}>
-                +
-              </Button>
-              <Button
-                variant="danger"
-                onClick={() => dispatch(removeItemFromCart(product._id))}
-              >
-                x
-              </Button>
-            </div>
-          ))}
+        <MyCart></MyCart>
       </Row>
-      <p className="total__p">
-        total ({getTotal().totalQuantity} items) :{" "}
-        <strong>₪ {getTotal().totalPrice}</strong>
-      </p>
-      <Button variant="danger" onClick={() => dispatch(deleteCart())}>
-        clear cart
-      </Button>
-      <Link to="/cart">
-        <Button variant="primary">Go To Cart</Button>
-      </Link>
+     
     </div>
   );
 };

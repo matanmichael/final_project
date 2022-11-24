@@ -41,7 +41,8 @@ export const removeprodAsync = createAsyncThunk(
 export const updateprodAsync = createAsyncThunk(
     'product/updateprod',
     async (updateProduct) => {
-    const response = await updateprod(updateProduct, updateProduct.id);
+    console.log(updateProduct)
+    const response = await updateprod(updateProduct);
     return response.data;
   }
   );
@@ -75,12 +76,8 @@ export const productSlice = createSlice({
                 state.status = "idle";
             })
             .addCase(updateprodAsync.fulfilled, (state, action) => {
-                let updDesc = state.myProds.find((prod) => prod._id === action.payload);
-                let updPrice = state.myProds.find((prod) => prod._id === action.payload);
-                updDesc.desc = action.payload;
-                updPrice.price = action.payload;
-                state.status = 'idle';
-                
+                state.myProds.find((x) => x.id === action.payload.id);
+                state.status = 'Done';
               },);
     },
 });

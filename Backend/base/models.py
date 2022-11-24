@@ -12,7 +12,7 @@ class Category(models.Model):
 class Product(models.Model):
     _id=models.AutoField(primary_key=True,editable=False)
     desc = models.TextField(null=True,unique=True)
-    cat_id =models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)
+    cat_id =models.ForeignKey(Category, on_delete=models.CASCADE, null=False, blank=False,to_field='_id')
     price = models.DecimalField(max_digits=4,decimal_places=0,default=0)
     quantity = models.IntegerField(null=True)    
     image = models.ImageField(null=True,blank=True,default='/placeholder.png')

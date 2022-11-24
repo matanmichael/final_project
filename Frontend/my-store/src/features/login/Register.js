@@ -22,7 +22,7 @@ const Register = () => {
   return (
     <div>
       {" "}
-      <h2>SIGN-UP</h2>
+      <h3>SIGN-UP</h3>
       User Name{" "}
       <input
         type="text"

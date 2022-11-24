@@ -5,9 +5,9 @@ from .Serailizers import ProductSerializer
 from rest_framework.response import Response
 
 #admin
-@api_view(['POST','DELETE','PATCH'])
+@api_view(['POST','DELETE','PUT'])
 @permission_classes([IsAdminUser])
-def productAdmin(request,id=-1):
+def productAdmin(request,id=0):
     if request.method == 'POST': 
         Product.objects.create(desc=request.data['desc'] ,cat_id_id=request.data['cat_id_id'],price=request.data['price'])
         return Response("product created")
@@ -15,17 +15,13 @@ def productAdmin(request,id=-1):
         prod_delete= Product.objects.get(_id = id)
         prod_delete.delete()
         return Response("Product deleted")
-    if request.method == 'PATCH': 
-        if int(id) > 0:
-            prod = Product.objects.get(_id=id)
-            if "cat_id_id" in request.data:
-                prod.cat_id= Category.objects.get(_id = request.data["cat_id"])
-            if "desc" in request.data:
-                prod.desc=request.data["desc"]
-            if "price" in request.data:
-                prod.price=request.data["price"]
-            prod.save()
-            return Response("Product updated")
+    if request.method == 'PUT': 
+        product_update=Product.objects.get(_id = id)
+        product_update.desc =request.data['desc']
+        product_update.price =request.data['price']
+        product_update.save()
+        return Response({'PUT SUCCESS': id})
+
 #web user
 @api_view(['GET'])
 def getProductsPerCategoty(request, id=0):

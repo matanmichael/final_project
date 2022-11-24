@@ -19,7 +19,7 @@ const Category = () => {
   
   useEffect(() => {
     dispatch(getcatsAsync());
-  }, [categories.length]);
+  }, [categories]);
 
   return (
     <div style={{ backgroundColor: "grey" }}>

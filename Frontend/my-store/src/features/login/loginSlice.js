@@ -31,7 +31,6 @@ export const doSignupAsync = createAsyncThunk(
 export const doSignOutAsync = createAsyncThunk(
     'login/signOut',
     async (token) => {
-        console.log(token)
         const response = await signOut(token);
         return response.data;
     }

@@ -40,7 +40,7 @@ export function removeprod(id) {
 
 export function updateprod(updateProduct) {
     return new Promise((resolve) =>
-        axios.patch(URL_ADMIN + updateProduct.productId,updateProduct,{
+        axios.put(URL_ADMIN + updateProduct.id,updateProduct,{
             headers: {
                 'Authorization': `Bearer ${updateProduct.userToken}`
             }
